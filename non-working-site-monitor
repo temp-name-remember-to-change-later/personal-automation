@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import os
+import sys
+import time
+import urllib.request
+
+# this doesn't work
+# there is no reason to run this
+
+url = sys.argv[1]
+site = urllib.request.urlopen(url)
+delay = 5
+i = 0
+while(True):
+    print('[{}] Checking site {} for updates...'.format(i, url))
+    a = site.read()
+    time.sleep(delay)
+    b = site.read()
+    i += 1
+    if a != b:
+        os.system('notify-send "Site update detected at {}."'.format(url))
+

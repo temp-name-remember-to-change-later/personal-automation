@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+import os
+intel = 'intel'
+nvidia = 'nvidia'
+
+# Swaps GPU using optimus-manager
+
+mode_out = os.popen('optimus-manager --print-mode').read().split(' ')
+gpu = mode_out[len(mode_out) - 1][:-1]
+other_gpu = intel if gpu == nvidia else nvidia
+
+choice = input('Current GPU: {}\nSwitch GPU to {}? (y/N): '.format(gpu, other_gpu))
+if choice.lower() == 'y':
+    os.system('optimus-manager --switch {} --no-confirm'.format(other_gpu))
+

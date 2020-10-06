@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+# Read wi-fi info
+infile = open(sys.path[0] + '/hotspotinfo')
+args = infile.readline().split()
+infile.close()
+wifi_interface = args[0]
+ssid = args[1]
+# Usually you shouldn't store passwords in plaintext but here it doesn't really matter
+# since it's just a hotspot password which tells me when someone connects
+# plus I can easily change it
+passwd = args[2]
+
+# These lines are to figure out what the active internet connection is.
+os.system('nmcli device status > /tmp/internet-interface-info')
+f = open('/tmp/internet-interface-info')
+f.readline()
+activeline = f.readline()
+eth = activeline[0:activeline.index(' ')]
+
+# These lines execute the hotspot command.
+command = 'sudo create_ap {} {} {} {}'.format(wifi_interface, eth, ssid, passwd)
+os.system(command)
