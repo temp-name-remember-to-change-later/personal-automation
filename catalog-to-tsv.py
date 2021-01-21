@@ -59,7 +59,6 @@ for i in range(len(lines)):
         entries.append(i)
 
 # Parses the page text to find the endpoint of class descriptions.
-# Super inefficient since it goes through the whole thing almost 3 times but whatever
 # This prevents weirdness later on
 last = 0
 for line in lines:
