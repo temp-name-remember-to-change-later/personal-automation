@@ -88,7 +88,8 @@ for entry in entries[:len(entries) - 1]:
         continue
 
     # Here the "info" list gets created which contains all the information for this entry.
-    # It starts out with the number, title, and units for a given course.
+    # It starts out with the number and title for a given course.
+    # The number of units gets saved for later since IMO it's less important since basically every course is 100 units
     splitstring = s.split('  ')
     info = splitstring[0:2]
 
@@ -169,7 +170,7 @@ for entry in entries[:len(entries) - 1]:
     while len(info) < 10:
         info.append('')
 
-    # Here it finally appends the number of units. I put it here since basically every course is 100 units so it doesn't really matter.
+    # Here it finally appends the number of units. Again, I put it here since basically every course is 100 units so it doesn't really matter.
     info.append(splitstring[2])
 
     # and same thing for extra notes.
