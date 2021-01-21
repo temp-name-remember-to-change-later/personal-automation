@@ -93,7 +93,7 @@ for entry in entries[:len(entries) - 1]:
     splitstring = s.split('  ')
     info = splitstring[0:2]
 
-    # If the nolink argument was not supplied, then the course number become formatted as a link.
+    # If the nolink argument was not supplied, then the course number becomes formatted as a link.
     # This link links to a search on the college catalog, which supplies the course description.
     if not nolink:
         info[0] = '=HYPERLINK("' + \
